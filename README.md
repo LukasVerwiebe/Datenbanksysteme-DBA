@@ -16,7 +16,7 @@ Kentnisse üuber die wesentlichen Merkmale von Datenbanksystemen erlernen:
 4. SQL
 5. Erweiterte SQL-Anfragen
 6. Java Database Connectivity (JDBC)
-7. Funktionale Abhangigkeiten und Normalformen
-8. Transaktionsmanagement und Integritatssicherung
+7. Funktionale Abhängigkeiten und Normalformen
+8. Transaktionsmanagement und Integritätssicherung
 9. DB Implementierungn und Anfrageoptimierung
 10. XML
