@@ -3,7 +3,7 @@
 Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Datenbanksysteme (DBA).
 
 ## Ziele der Vorlesung:
-Kentnisse üuber die wesentlichen Merkmale von Datenbanksystemen erlernen:
+Kentnisse über die wesentlichen Merkmale von Datenbanksystemen erlernen:
 - Modellierung von Daten (mit Hilfe relationaler Datenbankschemata)
 - Verarbeitung von Daten durch mehrere Nutzer und unter Beachtung von Integritätsbedingungen (Anfragesprache SQL)
 - Effiziente und skalierbare Speicherung von Daten
