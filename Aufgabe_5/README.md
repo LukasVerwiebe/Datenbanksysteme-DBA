@@ -1,22 +1,43 @@
-# Datenbanksysteme-DBA
+# Aufgabenblatt 5
 
-Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Datenbanksysteme (DBA).
+## Aufgabe 5.1 (Ein erstes JDBC-Projekt).
+Im Rahmen dieser Aufgabe sollen die Konzepte zur Anfrageverarbeitung von JDBC sukzessive praktisch geübt werden. Dabei sollen Sie im Wesentlichen den in der Vorlesung
+vorgestellten Standardablauf zugrunde legen. Als Datenbank soll weiterhin die Nordwind-DB zum Einsatz kommen. Diese lässt sich genau so, wie Sie sie bereits zur Ausführung der SQL-Anfragen verwendet haben, weiterhin innerhalb von Netbeans für den zu erstellenden Java-Code betreiben.
 
-## Ziele der Vorlesung:
-Kentnisse über die wesentlichen Merkmale von Datenbanksystemen erlernen:
-- Modellierung von Daten (mit Hilfe relationaler Datenbankschemata)
-- Verarbeitung von Daten durch mehrere Nutzer und unter Beachtung von Integritätsbedingungen (Anfragesprache SQL)
-- Effiziente und skalierbare Speicherung von Daten
-- Ausblick zu erweiterten Datenbankformaten
+Als Arbeitsumfeld benötigen Sie ein Java-Application-Projekt (Netbeans 11+). Fügen Sie dem Projekt unter “Dependencies” die JavaDB-Treiber-Bibliotheken org.apache.derby:derbynet (Suche über Query “derbynet”) und org.apache.derby:derbyclient (Suche über Query “derbyclient”) jeweils in der Version 10.15.2 hinzu. Erstellen Sie zur Lösung dieser Aufgabe und der folgenden Aufgaben nur eine einzige Klasse (z.B. Uebungsblatt5). Die Aufgabenstellung ist so konzipiert, dass für jede Teilaufgabe eine statische Methode zur Umsetzung entstehen soll (z.B. private static void aufgabe1_a(. . . )). Innerhalb dieser Methode können Sie natürlich beliebig weitere Methoden und statische Variablen definieren und verwenden, um Ihre Programmlogik übersichtlich zu strukturieren. Es sollte aber so sein, dass sich die gesamte Lösung einer Teilaufgabe nur durch Aufruf einer einzigen, der Teilaufgabe zugeordneten statischen Methode ausführen lässt. Dann kann der konkrete Aufruf dieser Methoden innerhalb der main-Methode erfolgen. Kommentieren Sie die Methodenaufrufe bereits fertig gestellter Lösungen einfach beliebig ein und aus.
 
-## Themanbereiche:
-1. Grundlagen von Datenbanken
-2. Datenbankentwurf
-3. Die Relationale Algebra
-4. SQL
-5. Erweiterte SQL-Anfragen
-6. Java Database Connectivity (JDBC)
-7. Funktionale Abhängigkeiten und Normalformen
-8. Transaktionsmanagement und Integritätssicherung
-9. DB Implementierungn und Anfrageoptimierung
-10. XML
+Benutzerinteraktionen lassen sich simulieren, indem innerhalb der main-Methode der aufzurufenden Methode einfach die entsprechenden Daten per Parameter übergeben werden
+(z.B. der Firmenname für eine Suche nach Bestellungen für diesen Kunden).
+
+(a) Anbindung der Nordwind-DB mit JDBC Erstellen Sie eine Methode, die eine Verbindung zur Nordwind-Datenbank aufbaut und anschließend wieder schließt. Das Verbindungsobjekt soll dabei in einer statischen Variable “con” hinterlegt werden. Lagern Sie die jeweilige Logik sinnvoll in Untermethoden (connect, close) aus, um das
+Aufbauen und Schließen der Datenbankverbindung wiederverwenden zu können. Behandeln Sie mögliche Ausnahmen (SQLExceptions) sinnvoll und geben Sie entsprechende Log-Meldungen über die Standardausgabe aus. Es sollen mindestens die folgenden Artefakte entstehen:
+
+- Eine statische Methode, die die Teilaufgabe repräsentiert.
+- Eine statische Methode für den Verbindungsaufbau (connect).
+- Eine statische Methode für den Verbindungsabbau (close).
+- Eine statische Variable, die das Verbindungsobjekt speichert (con).
+
+(b) Verarbeitung einer einfachen Anfrage Erstellen Sie eine Methode, die die Anfrage
+- Welche Artikel (Artikelname) sind von der Firma “Ernst Handel” noch nicht bestellt worden?
+
+(siehe auch Blatt 4) ausführt und das Ergebnis in die Standardausgabe schreibt. Nutzen Sie zunächst ein Objekt des Typs java.sql.Statement, um die SQL-Anfrage zu repräsentieren und führen Sie sie mit executeQuery aus. Vergessen Sie nicht, vor dem Schließen der Datenbankverbindung alle verwendeten Ressourcen zu schließen. Sie können ausgewählte Ressourcen auch unter Verwendung von try-with-resources automatisch schließen lassen. Es sollen mindestens die folgenden Artefakte entstehen:
+- Eine statische Methode, die die Teilaufgabe repräsentiert.
+
+(c) Parametrisierung der Anfrage Wir möchten die Anfrage aus der Teilaufgabe 1(b) nun variabel gestalten und einen Parameter einführen. Erstellen Sie eine Methode, die die Anfrage aus der Teilaufgabe 1(b) ausführt aber die Firma nicht mehr statisch im SQL-Ausdruck festlegt, sondern als Parameter übergeben bekommt. Verwenden Sie weiterhin ein Objekt des Typs Statement und fügen Sie den übergebenen Firmennamen per String-Verkettung in den SQL-Ausdruck ein. Führen Sie in Ihrer main-Methode die erstellte Methode mit unterschiedlichen Firmennamen aus und verwenden Sie auch Namen, die als Kunde nicht in der Nordwind-Datenbank vorkommen. Es sollen mindestens die folgenden Artefakte entstehen: 
+- Eine statische Methode, die die Teilaufgabe repräsentiert.
+
+(d) Verwendung von Prepared-Statements Lösen Sie die Teilaufgabe 1(c) nun unter Verwendung eines Objekts des Typs java.sql.PreparedStatement. Es sollen mindestens die folgenden Artefakte entstehen:
+- Eine statische Methode, die die Teilaufgabe repräsentiert.
+
+(e) Erweiterung der Ergebnisprojektion Wir möchten nun die ermittelten Artikeldaten aus der Teilaufgabe 1(d) um weitere Artikeleigenschaften erweitern und die Ausgabe
+entsprechend anpassen. Erstellen Sie eine Methode, die die Anfrage aus der Teilaufgabe 1(d) dahingehend erweitert, dass neben dem Artikelnamen auch die Artikel-Nr und der Einzelpreis in der Form
+
+![image](https://user-images.githubusercontent.com/63674539/192626774-3eefb810-d29f-429a-a21a-57e55b198e57.png)
+
+Es sollen mindestens die folgenden Artefakte entstehen:
+-  Eine statische Methode, die die Teilaufgabe repräsentiert.
+
+Hinweis: Sie können zur Formatierung des Einzelpreises NumberFormat verwenden.
+
+
+
