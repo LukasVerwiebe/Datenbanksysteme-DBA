@@ -39,5 +39,35 @@ Es sollen mindestens die folgenden Artefakte entstehen:
 
 Hinweis: Sie können zur Formatierung des Einzelpreises NumberFormat verwenden.
 
+(f) Behandlung von NULL-Werten Erstellen Sie eine Methode, die alle Bestellungen (Bestell-Nr und Versanddatum) eines über einen Parameter übergebenen Kunden (Firma) in der Standardausgabe ausgibt. Wenn die Bestellung noch nicht versandt wurde (NULL-Wert), soll die Ausgabe die Meldung “Noch nicht versandt” anstelle eines Datums ausgeben. Führen Sie in Ihrer main-Methode die erstellte Methode mit den Firmennamen “Ernst Handel”, “Great Lakes Food Market” und “LILA-Supermercado” aus. Es sollen mindestens die folgenden Artefakte entstehen:
+- Eine statische Methode, die die Teilaufgabe repräsentiert.
+
+Hinweise:
+- Nutzen Sie zur Prüfung auf NULL die passende Methode des Result-Sets-Objekts.
+- Sie können für die Formatierung der Ausgabe des Versanddatums z.B. SimpleDateFormat verwenden.
 
 
+## Aufgabe 5.2 (Manipulation der Datenbank).
+Im Rahmen dieser Aufgabe möchten wir nun Konzepte von JDBC anwenden, um Datenbankinhalte zu manipulieren. Die Lösungen der Teilaufgaben sollen nach dem selben Prinzip erarbeitet werden wie in Aufgabe 1. Verwenden Sie die Methoden zur Verwaltung der Datenbankverbindung (connect und close) aus der Aufgabe 1 auch in dieser Aufgabe. Verwenden Sie nicht die optionalen Funktionen des Result-Sets zum Ändern, Löschen und Hinzufügen von Datensätzen. Verwenden Sie ausschließlich die entsprechenden SQL-Ausdrücke. Nutzen Sie für parametrisierte Ausdrücke konsequent Objekte der Klasse Prepared-Statement!
+
+(a) Änderung von DB-Inhalten Erstellen Sie eine Methode, die für einen per Parameter übergebenen Artikel (Artikelname) den Einzelpreis um 10% erhöht und geben Sie über die Standardausgabe eine Mitteilung aus, ob die Änderung erfolgreich durchgeführt werden konnte. Bedenken Sie dabei, dass ein UPDATE auch dann erfolgreich ausgeführt wird, wenn kein Datensatz verändert wurde. Sie müssen also auswerten, ob überhaupt Datensätze mit dem UPDATE geändert wurden. Führen Sie in Ihrer main-Methode die erstellte Methode mit drei beliebigen Artikeln aus. Verwenden Sie auch einen Artikelnamen, den die Nordwind GmbH nicht anbietet!
+
+(b) Änderung von DB-Inhalten Erstellen Sie eine Kopie der Methode aus (a) und passen Sie sie so an, dass nun der Einzelpreis direkt über einen per Parameterübergabe
+angegeben Wert geändert werden kann. Führen Sie wieder in Ihrer main-Methode die erstellte Methode mit drei beliebigen Artikeln aus. Verwenden Sie auch hier wieder einen Artikelnamen, den die Nordwind GmbH nicht anbietet!
+
+(c) Hinzufügen von Datensätzen Erstellen Sie eine Methode, die einen neuen Artikel auf Basis der folgenden Angaben hinzufügt:
+- Artikelname
+- Einzelpreis
+- Mindestbestand
+- Liefereinheit
+
+Diese sollen als Parameter übergeben werden. Die Werte für Lagerbestand und BestellteEinheiten sollen mit demWert 0 und Auslaufartikel mit false initialisiert werden. Die Werte für Lieferanten-Nr und Kategorie-Nr sollen NULL bleiben. Die Artikel-Nr wird automatisch generiert und kann ignoriert werden.
+
+Führen Sie in Ihrer main-Methode die erstellte Methode mit den folgenden drei neuen Artikeln aus:
+
+![image](https://user-images.githubusercontent.com/63674539/192627624-7ad72396-ab53-41f6-b81d-e774a8a8e214.png)
+
+(d) Löschen von Datensätzen Erstellen Sie eine Methode, die den per Parameter übergebenen Artikel (Artikelname) löscht und geben über die Standardausgabe eine Mitteilung aus, ob die Löschung erfolgreich durchgeführt werden konnte. Führen Sie in Ihrer main-Methode die erstellte Methode für die in der vorherigen Teilaufgabe
+2(c) neu angelegten Artikel und einen beliebigen, nicht in der Datenbank befindlichen Artikelnamen aus.
+
+(e) Manuelle Transaktionen JDBC fasst standardmäßig alle Statement-Ausführungen automatisch in eine Transaktion zusammen. Bei Datenbankmanipulationen, die aus mehr als einem Statement bestehen, welche zusammen als atomare Einheit betrachtet werden sollen, muss dieser Automatismus abgeschaltet und die Transaktion manuell verwaltet werden. Erstellen Sie eine Methode, die den Einzelpreis für Chang auf 15,00 Euro setzt und alle Bestelldetails, die auf Chang verweisen, entsprechend aktualisiert. Fassen Sie die beiden notwendigen Updates in eine Transaktion zusammen und wenden Sie für die Umsetzung die aus der Vorlesung bekannte try-catch-finally Schablone an.
