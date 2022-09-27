@@ -1,6 +1,6 @@
 # Datenbanksysteme-DBA
 
-Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Datenbanksysteme (DBA).
+Dieses Projekt beinhaltet alle Praktischen Übungen des Kurses Datenbanksysteme (DBA). Dabei wurden nur die Aufgaben welche die Bearbeitung in SQL oder Java voraussetzten hochgeladen.
 
 ## Ziele der Vorlesung:
 Kentnisse über die wesentlichen Merkmale von Datenbanksystemen erlernen:
